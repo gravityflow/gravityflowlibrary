@@ -8,6 +8,8 @@
  * License: GPL-3.0+
  *
  * Copyright 2017 Steven Henty
+ *
+ * Requires Gravity Flow 1.8.1+ and the Form Connector Extension 1.2.1+
  */
 
 add_action( 'gravityflow_loaded', function () {
