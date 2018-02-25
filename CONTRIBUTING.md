@@ -11,3 +11,4 @@ Guidelines for submission:
 - Each snippet should be placed in its own file.
 - Each file should be named appropriately based on the purpose of the snippet.
 - All functions and classes should be prefixed with your own unique prefix, preferably one that contains your initials followed by `_gravityflow_`. For example: `sh_gravityflow_{function name here}`.
+- Add a plugin header to make the snippet easy to install as a plugin.
