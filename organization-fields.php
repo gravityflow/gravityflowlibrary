@@ -3,11 +3,11 @@
 Plugin Name: Organization User Fields
 Description: Adds Department and Manager fields to the user profile.
 Version: 1.0
-Author: Steven Henty
+Author: Gravity Flow
 Author URI: http://www.stevenhenty.com
 License: GPL-3.0+
 
-Copyright 2018 Steven Henty
+Copyright 2018 Steven Henty S.L.
 
 *** Instructions ***
 Use in merge tags e.g
