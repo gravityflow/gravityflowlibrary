@@ -77,7 +77,7 @@ function gravityflow_org_user_profile_fields( $user ) {
 add_action( 'personal_options_update', 'save_gravityflow_org_user_profile_fields' );
 add_action( 'edit_user_profile_update', 'save_gravityflow_org_user_profile_fields' );
 
-function save_extra_user_profile_fields( $user_id ) {
+function save_gravityflow_org_user_profile_fields( $user_id ) {
 	if ( ! current_user_can( 'edit_user', $user_id ) ) {
 		return false;
 	}
