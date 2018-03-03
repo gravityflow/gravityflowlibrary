@@ -11,8 +11,8 @@ Copyright 2018 Steven Henty S.L.
 
 *** Instructions ***
 Use in merge tags e.g
-{user:manager} {user:department}
-{created_by:manager} {created_by:department}
+{user:manager_id} {user:department}
+{created_by:manager_id} {created_by:department}
 
 Adjust the array of departments.
 */
