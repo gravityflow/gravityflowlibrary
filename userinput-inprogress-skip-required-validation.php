@@ -1,5 +1,16 @@
 <?php
-//https://github.com/gravityflow/gravityflowlibrary
+/**
+ * Plugin Name: Gravity Flow Library - User Input skip required validation for in progress
+ * Description: Bypass required field validation on defined form/fields when saving in progress user input step
+ * Version: 1.0
+ * Author: Jamie Oastler
+ * Author URI: http://idealienstudios.com
+ * License: GPL-3.0+
+ *
+ * Copyright 2018 Jamie Oastler
+ *
+ * Requires Gravity Flow 1.8.1+
+ */
 /*
 WHEN WOULD I USE THIS SNIPPET?
 You have a large form with many fields that are required but you do not want to validate them during a user input step in progress.
@@ -13,24 +24,24 @@ add_filter( 'gravityflow_validation_user_input',  'workflow_inprogress_bypass_re
 
 function workflow_inprogress_bypass_required_fields( $validation_result, $step, $new_status ) {
 
-    $form_id = '123';
-    $step_id = '45';
+	$form_id = '123';
+	$step_id = '45';
 
-    if( ($validation_result['form']['id'] == $form_id && rgpost( 'step_id' ) == $step_id && $new_status == 'in_progress') ) {
+	if( ($validation_result['form']['id'] == $form_id && rgpost( 'step_id' ) == $step_id && $new_status == 'in_progress') ) {
 
-        $form = $validation_result['form'];
-        
-        foreach ( $form['fields'] as &$field ) {
-            $field->failed_validation = false;
-            $field->validation_message = '';
-        }
+		$form = $validation_result['form'];
 
-        $validation_result = array(
-            'is_valid' => true,
-            'form'     => $form,
-        );
+		foreach ( $form['fields'] as &$field ) {
+			$field->failed_validation = false;
+			$field->validation_message = '';
+		}
 
-    }
-    
-    return $validation_result;
+		$validation_result = array(
+			'is_valid' => true,
+			'form'     => $form,
+		);
+
+	}
+
+	return $validation_result;
 }
