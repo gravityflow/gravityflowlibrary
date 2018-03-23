@@ -26,7 +26,7 @@ add_filter( 'gravityflow_step_schedule_timestamp', 'schedule_business_hours', 10
 function schedule_business_hours( $schedule_timestamp, $schedule_type, $step ) {
 
 	//Ensure you are only adjusting the desired form/step
-	if ( $step->get_id() !== 74 ) {
+	if ( $step->get_id() !== 76 ) {
 		return $schedule_timestamp;
 	}
 
@@ -36,7 +36,6 @@ function schedule_business_hours( $schedule_timestamp, $schedule_type, $step ) {
 	$start_hour = 9;
 	$end_hour = 17;
 
-	
 	$current_timestamp = time();
 	$tz = get_option('timezone_string');
 	$dt = new DateTime("now", new DateTimeZone($tz));
@@ -46,12 +45,12 @@ function schedule_business_hours( $schedule_timestamp, $schedule_type, $step ) {
 	$current_day_of_week = $dt->format('N');
 
 	//Modify the value of $current_timestamp if you want to test the step arriving separate from actual time.
-	//Wed Mar 21 @ 21:00 - 1521680400
-	//$current_timestamp = 1521680400;
+	gravity_flow()->log_debug( __METHOD__ . '(): Comparing '. $current_hour . ' against ' . $start_hour . ' - ' . $end_hour);
 
 	//Weekday + Business Hours
 	if ( in_array( $current_day_of_week, array( 1, 2, 3, 4, 5 ) ) && $current_hour >= $start_hour && $current_hour <= $end_hour ) {
 		gravity_flow()->log_debug( __METHOD__ . '(): Business Hour Request - Proceeding with default schedule');
+		
 		return $schedule_timestamp;
 	}
 	
@@ -80,7 +79,11 @@ function schedule_business_hours( $schedule_timestamp, $schedule_type, $step ) {
 		$delay_hours = 0;
 	}
 
-	gravity_flow()->log_debug( __METHOD__ . '(): Outside Business Hour Request - Delaying by ' . $delay_hours . ' hour(s) to ' . date( 'Y-m-d H:i:s', $schedule_timestamp ) );
+	$delayed_timestamp = $schedule_timestamp + ( $delay_hours * 60 * 60 );
 
-	return $schedule_timestamp;
+	$dt->setTimestamp($delayed_timestamp);
+
+	gravity_flow()->log_debug( __METHOD__ . '(): Outside Business Hour Request');
+	gravity_flow()->log_debug( __METHOD__ . '(): Delaying by ' . $delay_hours . ' hour(s) to ' . $dt->format('Y-m-d h:m:s') );
+	return $delayed_timestamp;
 }
