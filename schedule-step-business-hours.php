@@ -3,11 +3,11 @@
 Plugin Name: Schedule Step By Business Hours
 Description: Adjust step schedule to start during business hours
 Version: 1.0
-Author: Jamie Oastler
+Author: Steven Henty
 Author URI: http://www.idealienstudios.com
 License: GPL-3.0+
 
-Copyright 2018 Jamie Oastler
+Copyright 2018 Steven Henty
 */
 
 /*
