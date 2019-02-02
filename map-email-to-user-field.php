@@ -3,11 +3,11 @@
  * Plugin Name: Gravity Flow Library - Map email field to user field
  * Description: During form submission maps a user id into user field based on email field value
  * Version: 1.0
- * Author: Jamie Oastler
- * Author URI: http://idealienstudios.com
+ * Author: Steven Henty
+ * Author URI: https://gravityflow.io
  * License: GPL-3.0+
  *
- * Copyright 2018 Jamie Oastler
+ * Copyright 2019 Steven Henty
  *
  * Requires Gravity Flow 1.8.1+
  */
@@ -18,9 +18,9 @@ You want user, Gravity Forms CLI or other automation tool, to submit a form prov
 If you were to assign the step directly to email field they must access it via token which is not associated to the WP User despite user profile matching email.
 
 HOW WOULD I USE THIS SNIPPET?
-Copy and paste the code into your child theme's functions.php or place inside a custom functionality plugin.
-Create a form with email field and (likely) hidden user field.
-Replace defined variables ($form_id, $email_field_id, $user_field_id) with your workflow specific values to map the email field value to a hidden user field
+- Activate this plugin
+- Create a form with email field and (likely) hidden user field.
+- Replace defined variables ($form_id, $email_field_id, $user_field_id) with your workflow specific values to map the email field value to a hidden user field
 */
 
 add_action( 'gform_pre_submission', 'map_email_to_user_field', 10, 1 );
